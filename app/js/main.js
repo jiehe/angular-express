@@ -3,7 +3,7 @@
 require.config({
 	paths: {
 		angular: '../bower_components/angular/angular',
-		uiRouter: '../bower_components/angular-route/angular-ui-router',
+		uiRouter: '../bower_components/angular-ui-router/release/angular-ui-router',
 		jquery:'./lib/jquery-1.9.1.min',
 		jDialog:'./lib/jDialog',
 		jCloud:'./lib/jqcloud-1.0.4.min',

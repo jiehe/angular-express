@@ -1,8 +1,8 @@
 'use strict';
 
 define([
-    './sync/aside',
-    './sync/tagArticle',
-    './sync/tagCloud'
+    './sync/trade',
+    './sync/withdraw',
+    './sync/recharge',
   ],
   function(){});
