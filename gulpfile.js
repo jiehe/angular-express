@@ -15,7 +15,7 @@ var concat = require('gulp-concat');
 
 gulp.task('less', function () {
 
-  return gulp.src('./app/style/less/**/*.less')
+  return gulp.src('./public/app/style/less/**/*.less')
     .pipe(less())
     .on('error', function (error) {
       gutil.log(gutil.colors.red(error.message))
@@ -24,7 +24,7 @@ gulp.task('less', function () {
         message: error.message
       })
     })
-    .pipe(gulp.dest('./app/style/dest/'));
+    .pipe(gulp.dest('./public/app/style/dist/'));
 
 });
 gulp.task('less2', function () {
@@ -38,7 +38,7 @@ gulp.task('less2', function () {
         message: error.message
       })
     })
-    .pipe(gulp.dest('./app/style/dest/'));
+    .pipe(gulp.dest('./app/style/dist/'));
 
 });
 
@@ -53,7 +53,7 @@ gulp.task('minifyCss', function () {
         message: error.message
       })
     })
-    .pipe(gulp.dest('./app/style/dest/'));
+    .pipe(gulp.dest('./app/style/dist/'));
 });
 gulp.task('connect', function() {
   connect.server({
@@ -68,6 +68,6 @@ gulp.task('html',["less"], function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['./app/style/less/**/*.less'], ['html']);
+  gulp.watch(['./public/app/style/less/**/*.less'], ['less']);
 });
 gulp.task('default', ['connect', 'watch']);
