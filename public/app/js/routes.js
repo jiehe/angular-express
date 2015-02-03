@@ -50,7 +50,8 @@ define(['angular', 'app'], function (angular, app) {
             templateUrl: 'app/tpl/record/header.html'
           },
           'body@record': {
-            templateUrl: 'app/tpl/record/recharge.html'
+            templateUrl: 'app/tpl/record/recharge.html',
+            'controller': 'recharge'
           },
           'footer@record': {
             templateUrl: 'app/tpl/record/footer.html'
