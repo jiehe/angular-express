@@ -169,7 +169,6 @@ Now browse to the app at `http://localhost:8000/app/index.html`.
       js/               --> javascript files
         app.js          --> application
         controllers.js  --> application controllers
-        directives.js   --> application directives
         filters.js      --> custom angular filters
         services.js     --> custom angular services
       partials/             --> angular view partials (partial html templates)

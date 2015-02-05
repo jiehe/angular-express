@@ -1,1 +1,33 @@
-{{name}}
+<div class="table-responsive record-body recharge-body">
+	<table class="table table-bordered table-striped">
+		<thead>
+			<th>流水号</th>
+			<th>买家账号</th>
+			<th>充值金额($)</th>
+			<th>服务费($)</th>
+			<th>优惠($)</th>
+			<th>充值方式</th>
+			<th>创建时间</th>
+			<th>完成时间</th>
+			<th>状态</th>
+			<th>操作{{maxPage}}</th>
+		</thead>
+		<tr ng-repeat="item in items | orderByCreateTime: 'true' | orderBy:'status' ">
+			<td>{{item.transactionNumber}}</td>
+			<td>{{item.accountName}}</td>
+			<td>{{item.transactionMoney |currency}}</td>
+			<td>{{item.commission |currency}}</td>
+			<td>{{item.discountCommission |currency}}</td>
+			<td>{{item.transactionMethod}}</td>
+			<td>{{item.createTime}}</td>
+			<td>{{item.completeTime}}</td>
+			<td>{{item.status}}</td>
+			<td colspan="2" ng-class="{'hide':item.status}"><pending item="{{item}}"><button class="btn btn-warning">确认充值</button></pending></td>
+			<td colspan="2" ng-class="{'hide':!item.status}"><a class="btn btn-primary" href="#" ui-sref="rechargeDetail">查看{{$index}}</a></td>
+		</tr>
+	</table>
+	<div id="footer">
+		{{maxPage}}
+		<paging max-page="{{maxPage}}"  page-num="{{pageNum}}" ></paging>
+	</div>
+</div>

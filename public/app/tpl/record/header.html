@@ -1,10 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-	<meta charset="UTF-8">
-	<title></title>
-</head>
-<body>
-
-</body>
-</html>
+<header id="header">
+	<div class="header-inc">
+		<ul>
+			<li class="header-item">
+				<span>买家 :</span>
+				<div class="btn-group">
+					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">买家 &nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+					</ul>
+				</div>
+			</li>
+			<li class="header-item">
+				<span>充值时间 :</span>
+				<div class="time-wrap"><input id="startTime" size="16" type="text" value="2012-06-15" readonly class="form-control form_datetime"></div> &nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="time-wrap"><input id="endTime" size="16" type="text" value="2012-06-15" readonly class="form-control form_datetime"></div>
+			</li>
+			<li class="header-item">
+				<span>充值状态 :</span>
+				<div class="btn-group">
+					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">--全部-- &nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="">--全部--</a></li>
+						<li ng-repeat="item in status"><a href="">{{item}}</a></li>
+					</ul>
+				</div>
+			</li>
+			<li class="header-item">
+				<button type="button" class="btn btn-warning">搜索</button>
+			</li>
+		</ul>
+	</div>
+</header>

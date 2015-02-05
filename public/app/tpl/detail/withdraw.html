@@ -1,0 +1,122 @@
+<div class="detail withdraw-detail">
+	<header class="detail-header">
+		<table class="table">
+			<tr>
+				<td>
+					<strong>交易流水号 :</strong><span>{{detail.number}}</span>
+				</td>
+				<td>
+					<strong>交易类型 :</strong><span>{{detail.type}}</span>
+				</td>
+				<td>
+					<strong>状态 :</strong><strong class="text-yellow">{{detail.status}}</strong>
+				</td>
+			</tr>
+		</table>
+	</header>
+
+	<div class="detail-body recharge-detail-body">
+
+		<div class="gmcpay pay">
+			<div class="title gmctitle">
+				交易信息
+			</div>
+			<div class="pay-body">
+				<table class="table table-bordered">
+					<thead>
+					<th>账号信息</th>
+					<th>充值金额（$）</th>
+					<th>服务费（$）</th>
+					<th>优惠（$）</th>
+					<th>实际到账金额（$）</th>
+					<th>实际服务费（$）</th>
+					<th>实际优惠（$）</th>
+					<th>实充金额（$）</th>
+					<th>余额（$）</th>
+					</thead>
+					<tr>
+						<td class="text-oringe">{{detail.user}}</td>
+						<td>{{detail.rechargeFee}}</td>
+						<td>{{detail.serviceFee}}</td>
+						<td>{{detail.preFee}}</td>
+						<td>{{detail.actualFee}}</td>
+						<td>{{detail.actualServiceFee}}</td>
+						<td>{{detail.actualPreFee}}</td>
+						<td class="text-oringe">{{detail.actualRecharge}}</td>
+						<td class="text-blue">{{detail.balanceFee}}</td>
+					</tr>
+				</table>
+
+				<table class="table table-bordered second-table">
+					<tr>
+						<td><span class="item-key">买家账号：</span>{{detail.user}}</td>
+						<td><span class="item-key">交易方式：</span>{{detail.way}}</td>
+					</tr>
+					<tr>
+						<td><span class="item-key">创建时间：</span>{{detail.createTime}}</td>
+						<td><span class="item-key">完成时间：</span>{{detail.successTime}}</td>
+					</tr>
+					<tr>
+						<td><span class="item-key">操作者：</span>{{detail.handler}}</td>
+						<td><span class="item-key">操作者IP：</span>{{detail.handlerIp}}</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<strong>备注:</strong>
+							<textarea class="form-control" rows="4">{{detail.remark}}</textarea>
+						</td>
+					</tr>
+
+				</table>
+			</div>
+
+		</div>
+
+		<div class="bankpay pay">
+			<div class="title banktitle">
+				银行交易信息
+			</div>
+			<div class="pay-body">
+				<table class="table table-bordered second-table">
+					<tr>
+						<td><span class="item-key">银行流水号：</span>{{detail.bankNumber}}</td>
+						<td><span class="item-key">交易时间：</span>{{detail.tradeTime}}</td>
+					</tr>
+					<tr>
+						<td><span class="item-key">交易金额：</span><span class="text-oringe">{{detail.tradeFee}}</span></td>
+						<td><span class="item-key">交易费用：</span>{{detail.tradeCost}}</td>
+					</tr>
+					<tr>
+						<td><span class="item-key">余额：</span>{{detail.bankBanlanceFee}}</td>
+						<td><span class="item-key">email：</span>{{detail.email}}</td>
+					</tr>
+					<tr>
+						<td><span class="item-key">买家名称：</span>{{detail.user}}</td>
+						<td><span class="item-key">交易状态：</span>{{detail.bankStatus}}</td>
+					</tr>
+					<tr>
+						<td><span class="item-key">充值方式：</span>{{detail.bankWay}}</td>
+						<td><span class="item-key">T/T虚拟帐号：</span>{{detail.virtualAccount}}</td>
+					</tr>
+					<tr>
+						<td><span class="item-key">bank name:</span>{{detail.bankName}}</td>
+						<td><span class="item-key">account name:</span>{{detail.accountName}}</td>
+					</tr>
+					<tr>
+						<td><span class="item-key">bank address:</span>{{detail.bankAddress}}</td>
+						<td><span class="item-key">bank account number:</span>{{detail.bankAccountNumber}}</td>
+					</tr>
+					<tr>
+						<td><span class="item-key">swift code:</span>{{detail.swiftCode}}</td>
+						<td><span class="item-key">notes:</span>{{detail.note}}</td>
+					</tr>
+					<tr>
+						<td colspan="2"><span class="item-key">最后更新时间：</span>{{detail.lastUpdateTime}}</td>
+					</tr>
+
+				</table>
+			</div>
+		</div>
+
+	</div>
+</div>

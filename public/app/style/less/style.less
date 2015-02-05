@@ -2,7 +2,136 @@
 
 
 
+@width:1200px;
 
 
+body{
+  .bg-info;
+}
 
-body{background: #fff;}
+#header{
+  width:@width;
+  .bg-primary;
+  .center-block;
+  .clearfix;
+  .header-item{
+    .pull-left;
+    margin:40px 60px;
+    .time-wrap{
+      display: inline-block;
+      width:100px;
+    }
+  }
+}
+.import-bank-info{
+  .center-block;
+  width:@width;
+  height:66px;
+  margin-top:25px;
+  .bg-warning;
+  button{
+    margin:10px;
+  }
+}
+.record-body{
+  width:@width;
+  .center-block;
+  .bg-danger;
+  table{
+    text-align: center;
+    td{
+      vertical-align: middle !important;
+    }
+  }
+}
+.record-body{
+  th{
+    text-align: center;
+  }
+  pending{
+    position: relative;
+    .recharge-handle{
+      position: absolute;
+      display: block;
+      top: -34px;
+      z-index: 2;
+      a{
+        color:white;
+      }
+    }
+  }
+}
+.detail{
+  width:@width;
+  .center-block;
+  border:1px solid #CDCDCD;
+  .detail-header{
+    .bg-primary;
+    padding:25px 0px 1px 0px;
+    td{
+      width:33%;
+      text-align: center;
+      border:0px;
+    }
+  }
+  .pay{
+    margin:20px 25px;
+    min-height:200px;
+    border:1px solid #CDCDCD;
+    background: rgba(255,255,255,0.9);
+    th,td{
+      text-align: center;
+
+    }
+    .title{
+      font-size:20px;
+      font-weight: bold;
+      padding:15px 50px;
+      border-bottom:1px solid #cdcdcd;
+      box-sizing:content-box;
+    }
+    .pay-body{
+      padding:25px;
+      box-sizing: content-box;
+      .second-table{
+        th,td{
+          text-align: left;
+          .item-key{
+            width:100px;
+            text-align: right;
+            display: inline-block;
+            margin-right:25px;
+          }
+        }
+      }
+    }
+    &.gmcpay{
+      border-left:5px solid #f90;
+      .gmctitle{
+        color:#f90;
+      }
+    }
+    &.bankpay{
+      border-left:5px solid #6699FF;
+      .banktitle{
+        color:#6699FF;
+      }
+    }
+  }
+}
+#footer{
+  width:@width;
+  .center-block;
+  text-align: right;
+}
+.paging{
+  .paging-input{
+    display: inline-block;
+    width:34px;
+    margin:0px 5px;
+  }
+  .paging-find{
+    display: inline-block;
+    margin:20px 20px;
+  }
+}

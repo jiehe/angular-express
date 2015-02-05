@@ -1,7 +1,19 @@
-define(['../controllers'], function (controllers) {
-  controllers.controller('recharge', ['$scope', '$http', function ($scope, $http) {
+define(['../controllers','underscore', 'jDialog'], function (controllers, _, jD) {
+  controllers.controller('recharge', ['$scope', '$http', 'getRechargeRecord', '$stateParams', function ($scope, $http, getRechargeRecord, stateParams) {
 
-    $scope.name = 'recharge';
 
+
+
+
+
+    getRechargeRecord.getNewData(stateParams, getRechargeRecord_callback);
+    console.log(stateParams);
+    $scope.rechargeRecord = '';
+    function getRechargeRecord_callback(data) {
+      $scope.pageSize = data.pageSize;
+      $scope.pageNum = data.pageNum;
+      $scope.maxPage = data.maxPage;
+      $scope.items = data.items;
+    }
   }])
 });

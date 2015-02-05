@@ -1,0 +1,31 @@
+<div class="ensure-dialog table-responsive">
+	<table class="table table-bordered table-striped">
+		<tr>
+			<td>帐号 :</td>
+			<td><%= user %></td>
+		</tr>
+		<tr>
+			<td>银行交易号 :</td>
+			<td><%= tradeNumber %></td>
+		</tr>
+		<tr>
+			<td>到账金额($) :</td>
+			<td><strong class="text-oringe"><%= receviedFee %></strong></td>
+		</tr>
+		<tr>
+			<td>服务费($) :</td>
+			<td><%= serviceFee %></td>
+		</tr>
+		<tr>
+			<td>优惠($) :</td>
+			<td><%= preFee %></td>
+		</tr>
+		<tr>
+			<td><strong>实冲金额($) :</strong></td>
+			<td><strong class="text-red"><%= actual %></strong></td>
+		</tr>
+	</table>
+
+	<p>备注 :</p>
+	<textarea class="form-control" rows="3"></textarea>
+</div>

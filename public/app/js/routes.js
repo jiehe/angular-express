@@ -3,7 +3,7 @@
 define(['angular', 'app'], function (angular, app) {
 
   return app.config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/record');
+    $urlRouterProvider.otherwise('/record/recharge');
     $stateProvider
       .state('index', {
         url: '/index',
@@ -47,19 +47,17 @@ define(['angular', 'app'], function (angular, app) {
             templateUrl: 'app/tpl/record/index.html'
           },
           'header@record': {
-            templateUrl: 'app/tpl/record/header.html'
+            templateUrl: 'app/tpl/record/header.html',
+            controller: 'record.header'
           },
           'body@record': {
             templateUrl: 'app/tpl/record/recharge.html',
             'controller': 'recharge'
-          },
-          'footer@record': {
-            templateUrl: 'app/tpl/record/footer.html'
           }
         }
       })
       .state('record.recharge', {
-        url: '/recharge',
+        url: '/recharge?pageSize&pageNum',
         views: {
           'body@record': {
             templateUrl: 'app/tpl/record/recharge.html',
@@ -82,6 +80,24 @@ define(['angular', 'app'], function (angular, app) {
           'body@record': {
             templateUrl: 'app/tpl/record/withdraw.html',
             'controller': 'withdraw'
+          }
+        }
+      })
+      .state('rechargeDetail', {
+        url: '/rechargeDetail',
+        views: {
+          '': {
+            templateUrl: 'app/tpl/detail/recharge.html',
+            controller: 'rechargeDetail'
+          }
+        }
+      })
+      .state('withdrawDetail', {
+        url: '/withdrawDetail',
+        views: {
+          '': {
+            templateUrl: 'app/tpl/detail/withdraw.html',
+            controller: 'withdrawDetail'
           }
         }
       })

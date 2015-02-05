@@ -1,0 +1,22 @@
+<div class="clearfix paging pull-right">
+	<ul class="pagination pull-left">
+		<li ng-class="{disabled:pageNum == 1}">
+			<a href="{{router}}{{pageNum-1}}" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+			</a>
+		</li>
+		<li ng-class="{active:$index+1 == pageNum}"  ng-repeat="item in pagingRepeat">
+			<a href="{{router}}{{$index+1}}">{{$index+1}}</a>
+		</li>
+		<li ng-class="{disabled:pageNum == maxPage}">
+			<a href="{{router}}{{pageNum+1}}" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+			</a>
+		</li>
+	</ul>
+	<div class="paging-find pull-left">
+		共{{maxPage}}页&nbsp;&nbsp;&nbsp;到
+		<span class="paging-input"><input type="text" class="form-control"/></span>页
+		<button class="btn btn-success">确认</button>
+	</div>
+</div>

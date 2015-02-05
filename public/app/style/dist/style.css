@@ -87,6 +87,23 @@
 .bg-article {
   background-color: rgba(255, 255, 255, 0.86);
 }
+.text-red {
+  color: red;
+}
+.text-yellow {
+  color: yellow;
+}
+.text-oringe {
+  color: #FF9900;
+}
+.text-blue {
+  color: #1727CF;
+}
+::selection {
+  color: #fff;
+  background: #e84893;
+  text-shadow: none;
+}
 @font-face {
   font-family: "iconfont";
   src: url('../../iconfont/iconfont.eot');
@@ -6718,5 +6735,192 @@ button.close {
   }
 }
 body {
-  background: #fff;
+  background-color: #d9edf7;
+}
+abody:hover {
+  background-color: #afd9ee;
+}
+#header {
+  width: 1200px;
+  color: #fff;
+  background-color: #337ab7;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+a#header:hover {
+  background-color: #286090;
+}
+#header:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+}
+#header:before,
+#header:after {
+  content: "";
+  display: table;
+}
+#header:before,
+#header:after {
+  content: " ";
+  display: table;
+}
+#header:after {
+  clear: both;
+}
+#header:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+}
+#header:before,
+#header:after {
+  content: "";
+  display: table;
+}
+#header:before,
+#header:after {
+  content: " ";
+  display: table;
+}
+#header:after {
+  clear: both;
+}
+#header .header-item {
+  float: left !important;
+  margin: 40px 60px;
+}
+#header .header-item .time-wrap {
+  display: inline-block;
+  width: 100px;
+}
+.import-bank-info {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1200px;
+  height: 66px;
+  margin-top: 25px;
+  background-color: #fcf8e3;
+}
+a.import-bank-info:hover {
+  background-color: #f7ecb5;
+}
+.import-bank-info button {
+  margin: 10px;
+}
+.record-body {
+  width: 1200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f2dede;
+}
+a.record-body:hover {
+  background-color: #e4b9b9;
+}
+.record-body table {
+  text-align: center;
+}
+.record-body table td {
+  vertical-align: middle !important;
+}
+.record-body th {
+  text-align: center;
+}
+.record-body pending {
+  position: relative;
+}
+.record-body pending .recharge-handle {
+  position: absolute;
+  display: block;
+  top: -34px;
+  z-index: 2;
+}
+.record-body pending .recharge-handle a {
+  color: white;
+}
+.detail {
+  width: 1200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #CDCDCD;
+}
+.detail .detail-header {
+  color: #fff;
+  background-color: #337ab7;
+  padding: 25px 0px 1px 0px;
+}
+a.detail .detail-header:hover {
+  background-color: #286090;
+}
+.detail .detail-header td {
+  width: 33%;
+  text-align: center;
+  border: 0px;
+}
+.detail .pay {
+  margin: 20px 25px;
+  min-height: 200px;
+  border: 1px solid #CDCDCD;
+  background: rgba(255, 255, 255, 0.9);
+}
+.detail .pay th,
+.detail .pay td {
+  text-align: center;
+}
+.detail .pay .title {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px 50px;
+  border-bottom: 1px solid #cdcdcd;
+  box-sizing: content-box;
+}
+.detail .pay .pay-body {
+  padding: 25px;
+  box-sizing: content-box;
+}
+.detail .pay .pay-body .second-table th,
+.detail .pay .pay-body .second-table td {
+  text-align: left;
+}
+.detail .pay .pay-body .second-table th .item-key,
+.detail .pay .pay-body .second-table td .item-key {
+  width: 100px;
+  text-align: right;
+  display: inline-block;
+  margin-right: 25px;
+}
+.detail .pay.gmcpay {
+  border-left: 5px solid #f90;
+}
+.detail .pay.gmcpay .gmctitle {
+  color: #f90;
+}
+.detail .pay.bankpay {
+  border-left: 5px solid #6699FF;
+}
+.detail .pay.bankpay .banktitle {
+  color: #6699FF;
+}
+#footer {
+  width: 1200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: right;
+}
+.paging .paging-input {
+  display: inline-block;
+  width: 34px;
+  margin: 0px 5px;
+}
+.paging .paging-find {
+  display: inline-block;
+  margin: 20px 20px;
 }
