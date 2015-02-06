@@ -14,16 +14,59 @@ var api  = {
   getRechargeRecord: getRechargeRecord,
   getBankTradeRecord: getBankTradeRecord,
   getTradeRecord: getTradeRecord,
+  getWithdrawRecord: getWithdrawRecord,
   getRechargeDetail: getRechargeDetail,
-  getWithdrawDetail: getWithdrawDetail
+  getWithdrawDetail: getWithdrawDetail,
+  getUser: getUser,
+  fileUpdate: fileUpdate,
+  getBankCard: getBankCard
 }
+
+
+function getBankCard(req, res) {
+  var url = host + 'accountservice/getBuyerBankCardList.gm';
+
+  var option = {
+    pageNum: req.query.pageNum ||1,
+    pageSize:req.query.pageSize ||10,
+    buyerId: req.query.buyerId || 104
+  }
+  console.log(url);
+  request.get(url,{qs:option}, function(err,data){
+    if(err){
+      console.log(err);
+      return;
+    }
+
+    res.json(JSON.parse(data.body));
+  })
+}
+
+function fileUpdate(req, res) {
+  console.log(req);
+}
+
+
+function getUser(req, res) {
+
+  var url = host + 'accountservice/getBuyerBaseInfoList.gm';
+  request.get(url,{}, function(err,data){
+    if(err){
+      console.log(err);
+      return;
+    }
+
+    res.json(JSON.parse(data.body));
+  })
+}
+
 
 function getRechargeRecord(req, res) {
 
   var option = {
     pageNum: req.query.pageNum ||1,
-    pageSize:req.query.pageNum ||10,
-    buyerId:104
+    pageSize:req.query.pageSize ||10,
+    buyerId: req.query.buyerId || 104
   }
 
   _.extend(option, req.query);
@@ -42,14 +85,57 @@ function getRechargeRecord(req, res) {
 
   //res.json(RechargeRecord);
 }
+function getWithdrawRecord(req, res) {
 
-function getBankTradeRecord(rep, res) {
+  var option = {
+    pageNum: req.query.pageNum ||1,
+    pageSize:req.query.pageSize ||10,
+    buyerId: req.query.buyerId || 104
+  }
+
+  _.extend(option, req.query);
+  var url = host + 'transactionservice/getWithdrawRecordList4ERP.gm';
+
+
+  console.log(url);
+  request.get(url,{qs:option}, function(err,data){
+    if(err){
+      console.log(err);
+      return;
+    }
+
+    res.json(JSON.parse(data.body));
+  })
+
+  //res.json(RechargeRecord);
+}
+
+function getBankTradeRecord(req, res) {
+
+
   res.json(BankTradeRecord);
 }
 
 
-function getTradeRecord(rep, res) {
-  res.json(TradeRecord);
+function getTradeRecord(req, res) {
+  var option = {
+    pageNum: req.query.pageNum ||1,
+    pageSize: req.query.pageSize ||10,
+    buyerId: req.query.buyerId || 104
+  }
+
+  _.extend(option, req.query);
+  var url = host + 'transactionservice/getTransactionRecordList.gm';
+
+  console.log(url);
+  request.get(url,{qs:option}, function(err,data){
+    if(err){
+      console.log(err);
+      return;
+    }
+    res.json(JSON.parse(data.body));
+  })
+  //res.json(TradeRecord);
 }
 
 function getRechargeDetail(rep, res) {

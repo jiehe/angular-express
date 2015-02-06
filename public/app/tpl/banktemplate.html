@@ -1,0 +1,40 @@
+<div id="banktemplate">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">银行交易记录导入</h3>
+		</div>
+		<div class="panel-body">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">>>>Step 1. 下载模板</h3>
+				</div>
+				<div class="panel-body">
+					<a href="" target="_blank">点击下载模板</a>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">>>>Step 2. 填写资料</h3>
+				</div>
+				<div class="panel-body">
+					请按照模板要求准备填写资料，注意银行交易纪录与GMC Pay交易记录关联。每条GMC Pay交易记录只能关联一条银行交易记录。重复导入会覆盖原有记录。
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">>>>Step 3. 导入银行记录</h3>
+				</div>
+				<div class="panel-body">
+					<form ng-submit="fileUpdate()" enctype="multipart/form-data" class="form-inline">
+						<div class="form-group">
+							<label for="Drgfile-to-upload">--选择银行记录文件：</label>
+							<input type="file" id="Drgfile-to-upload">
+						</div>
+						<button type="submit" class="btn btn-primary">导入</button>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

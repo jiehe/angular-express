@@ -4,7 +4,9 @@
 
 
 define([
-  './sync/orderByCreateTime'
+  './sync/orderByCreateTime',
+  './sync/status',
+  './sync/method',
 ], function(){
 
 })

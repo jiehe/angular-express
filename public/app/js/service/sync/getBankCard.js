@@ -1,9 +1,12 @@
 /**
+ * Created by dong on 2015/2/6.
+ */
+/**
  * Created by dong on 2015/2/3.
  */
 define(['../services'], function(services){
 
-  services.factory('getTradeRecord', ['$http',function($http){
+  services.factory('getBankCard', ['$http',function($http){
 
     var service = {
       data: '',
@@ -16,15 +19,15 @@ define(['../services'], function(services){
         fn(service.data);
         return true;
       }
-      $http.get('/getTradeRecord', {params:option})
+      $http.get('/getBankCard', {params:option})
         .success(function(data){
           service.data = data;
           fn(data);
         })
     }
 
-    service.getNewData = function(data, fn) {
-      $http.get('/getTradeRecord', {params:option})
+    service.getNewData = function(option, fn) {
+      $http.get('/getBankCard', {params:option})
         .success(function(data){
           service.data = data;
           fn(data);

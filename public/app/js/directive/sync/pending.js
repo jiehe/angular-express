@@ -17,13 +17,17 @@ define(['../directives', 'jDialog', 'underscore', 'jquery'], function(directives
 
     return {
       restrict: 'AE',
-      template:'<div ng-transclude></div>'
-      + '<div class="recharge-handle btn btn-warning" ng-show="showHandle">'
-      + '<a ng-click="ensure()">确认充值</a><br>'
-      + '<a ng-click="failed()" >确认失败</a><br>'
-      + '<a >邮件催款</a><br>'
-      + '<a >导入银行记录</a>'
-      + '</div>',
+      //template:'<div ng-transclude></div>'
+      //+ '<div class="recharge-handle btn btn-warning" ng-show="showHandle">'
+      //+ '<a ng-click="ensure()">确认充值</a><br>'
+      //+ '<a ng-click="failed()" >确认失败</a><br>'
+      //+ '<a >邮件催款</a><br>'
+      //+ '<a >导入银行记录</a>'
+      //+ '</div>',
+      templateUrl: function(tElement, tArrs) {
+        var type = tArrs.type;
+        return 'app/tpl/directive/pending/'+ type +'.html';
+      },
       scope:{
         item: '@'
       },

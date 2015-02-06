@@ -17,9 +17,18 @@ router.get('/getBankTradeRecord', api.getBankTradeRecord);
 
 router.get('/getTradeRecord', api.getTradeRecord);
 
+router.get('/getWithdrawRecord', api.getWithdrawRecord);
+
 router.get('/getRechargeDetail', api.getRechargeDetail);
 
 router.get('/getWithdrawDetail', api.getWithdrawDetail);
+
+router.get('/getUser', api.getUser);
+
+router.get('/getBankCard', api.getBankCard);
+
+
+router.post('/fileUpdate', api.fileUpdate);
 
 
 

@@ -1,7 +1,7 @@
 
 
 define(['../directives'], function(directives){
-  directives.directive('paging', ['$stateParams', function(stateParams) {
+  directives.directive('paging', ['$stateParams', '$timeout', function(stateParams, timeout) {
 
     if(stateParams.pageSize){
 
@@ -15,16 +15,32 @@ define(['../directives'], function(directives){
         total: '@',
         pageSize: '@'
       },
+      replace:true,
       link:function(scope, element, attr){
 
-        if(stateParams.pageSize){
-          scope.pageSize = scope.pageSize? parseInt(scope.pageSize): 10;
-        }
-        scope.router = location.hash.substring(0,location.hash.indexOf('?')>-1?location.hash.indexOf('?'): location.hash.length) +'?pageSize='+scope.pageSize+'&pageNum=';
-        scope.pageNum = parseInt(scope.pageNum);
-        scope.pagingRepeat = [];
-        for(var i = 1,len = parseInt(scope.maxPage); i <=len; i++){
-          scope.pagingRepeat.push(i);
+        scope.$watch(scope.pageNum, function(newVal) {
+          scope.pageNum = newVal;
+          timeout(refresh, 100);
+        })
+
+        scope.$watch(scope.pageSize, function(newVal) {
+          scope.pageSize = newVal;
+          timeout(refresh, 100);
+        })
+
+        scope.$watch(scope.maxPage, function(newVal) {
+          scope.maxPage = newVal;
+          timeout(refresh, 100);
+        })
+
+
+        function refresh() {
+          scope.router = location.hash.substring(0,location.hash.indexOf('?')>-1?location.hash.indexOf('?'): location.hash.length) +'?pageSize='+scope.pageSize+'&pageNum=';
+          scope.pageNum = parseInt(scope.pageNum);
+          scope.pagingRepeat = [];
+          for(var i = 1,len = parseInt(scope.maxPage); i <=len; i++){
+            scope.pagingRepeat.push(i);
+          }
         }
       }
     }

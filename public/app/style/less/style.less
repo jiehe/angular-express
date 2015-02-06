@@ -22,6 +22,10 @@ body{
       width:100px;
     }
   }
+  .user-warp{
+    display: inline-block;
+    width:100px;
+  }
 }
 .import-bank-info{
   .center-block;
@@ -37,6 +41,7 @@ body{
   width:@width;
   .center-block;
   .bg-danger;
+  overflow-x: inherit;
   table{
     text-align: center;
     td{
@@ -50,10 +55,11 @@ body{
   }
   pending{
     position: relative;
-    .recharge-handle{
+    .pending-handle{
       position: absolute;
       display: block;
       top: -34px;
+      left:-55px;
       z-index: 2;
       a{
         color:white;
@@ -133,5 +139,26 @@ body{
   .paging-find{
     display: inline-block;
     margin:20px 20px;
+  }
+}
+
+#banktemplate{
+  width:@width;
+  .center-block;
+  .bg-primary;
+  margin-top:50px;
+  .text-warning;
+}
+#bankCardInfo{
+  width:@width;
+  .center-block;
+  .text-warning;
+  .panel-primary{
+    margin-top:50px;
+  }
+  .bankCardItem{
+    .pull-left;
+    width:500px;
+    margin-left:58px;
   }
 }

@@ -1,33 +1,35 @@
-<div class="table-responsive record-body trade-body">
-	<table class="table table-bordered table-striped">
-		<thead>
-		<th>流水号</th>
-		<th>买家账号</th>
-		<th>交易类型</th>
-		<th>交易金额($)</th>
-		<th>交易费用（$）</th>
-		<th>优惠($)</th>
-		<th>交易方式</th>
-		<th>创建时间</th>
-		<th>完成时间</th>
-		<th>状态</th>
-		<th>操作</th>
-		</thead>
-		<tr ng-repeat="item in tradeRecord | orderByCreateTime: 'true' | orderBy:'status' ">
-			<td>{{item.number}}</td>
-			<td>{{item.user}}</td>
-			<td>{{item.type}}</td>
-			<td>{{item.recharge |currency}}</td>
-			<td>{{item.service |currency}}</td>
-			<td>{{item.coupon |currency}}</td>
-			<td>{{item.way}}</td>
-			<td>{{item.createTime}}</td>
-			<td>{{item.successTime}}</td>
-			<td>{{item.status}}</td>
-			<td><a class="btn btn-primary" href="#">详情</a></td>
-		</tr>
-	</table>
+<div>
+	<div class="table-responsive record-body trade-body">
+		<table class="table table-bordered table-striped">
+			<thead>
+			<th>流水号</th>
+			<th>买家账号</th>
+			<th>交易类型</th>
+			<th>交易金额($)</th>
+			<th>交易费用（$）</th>
+			<th>优惠($)</th>
+			<th>交易方式</th>
+			<th>创建时间</th>
+			<th>完成时间</th>
+			<th>状态</th>
+			<th>操作</th>
+			</thead>
+			<tr ng-repeat="item in items | orderByCreateTime: 'true' | orderBy:'status' ">
+				<td>{{item.transactionNumber}}</td>
+				<td>{{item.accountName}}</td>
+				<td>{{item.transactionType}}</td>
+				<td>{{item.transactionMoney |currency}}</td>
+				<td>{{item.discountCommission |currency}}</td>
+				<td>{{item.coupon |currency}}</td>
+				<td>{{item.transactionMethod | method}}</td>
+				<td>{{item.createTime}}</td>
+				<td>{{item.completeTime}}</td>
+				<td>{{item.status | status}}</td>
+				<td><a class="btn btn-primary" href="#">详情</a></td>
+			</tr>
+		</table>
+	</div>
+	<footer id="footer">
+		<paging max-page="{{maxPage}}"  page-num="{{pageNum}}" total="30"></paging>
+	</footer>
 </div>
-<footer id="footer">
-	<paging max-page="6"  page-num="6" total="30"></paging>
-</footer>

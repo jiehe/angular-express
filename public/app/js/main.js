@@ -10,11 +10,15 @@ require.config({
 		datetimepicker:'./lib/bootstrap-datetimepicker',
 		text: './../bower_components/requirejs-text/text',
 		bootstrap: './../bower_components/bootstrap/dist/js/bootstrap.min',
-		underscore: './../bower_components/underscore/underscore-min'
+		underscore: './../bower_components/underscore/underscore-min',
+		fileUpload: './../bower_components/angular-file-upload/angular-file-upload.min'
 	},
 	shim: {
 		'angular' : {'exports' : 'angular'},
 		'uiRouter': {
+			deps:['angular']
+		},
+		'fileUpload': {
 			deps:['angular']
 		},
 		'jDialog': {

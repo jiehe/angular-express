@@ -7,6 +7,8 @@ define([
     './sync/record.header',
     './sync/trade',
     './sync/rechargeDetail',
-    './sync/withdrawDetail'
+    './sync/withdrawDetail',
+    './sync/banktemplate',
+    './sync/bankCardInfo',
   ],
   function(){});

@@ -1,4 +1,4 @@
-define(['../controllers','underscore', 'jDialog'], function (controllers, _, jD) {
+define(['../controllers','underscore'], function (controllers, _) {
   controllers.controller('recharge', ['$scope', '$http', 'getRechargeRecord', '$stateParams', function ($scope, $http, getRechargeRecord, stateParams) {
 
 

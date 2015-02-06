@@ -1,15 +1,15 @@
 define(['../controllers','underscore'], function (controllers, _) {
-  controllers.controller('trade', ['$scope', '$http', 'getTradeRecord',function ($scope, $http, getTradeRecord) {
+  controllers.controller('trade', ['$scope', '$http', 'getTradeRecord', '$stateParams',function ($scope, $http, getTradeRecord, stateParams) {
 
-    getTradeRecord.getData({}, getTradeRecord_callback);
+    getTradeRecord.getData(stateParams, getTradeRecord_callback);
 
     $scope.tradeRecord = '';
     function getTradeRecord_callback(data) {
 
-      _.each(data,function(item, key){
-        item.status = parseInt(item.status);
-      })
-      $scope.tradeRecord = data;
+      $scope.pageSize = data.pageSize;
+      $scope.pageNum = data.pageNum;
+      $scope.maxPage = data.maxPage;
+      $scope.items = data.items;
     }
   }])
 });

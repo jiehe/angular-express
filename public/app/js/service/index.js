@@ -3,5 +3,8 @@ define([
   './sync/getBankTradeRecord',
   './sync/getTradeRecord',
   './sync/getRechargeDetail',
-  './sync/getWithdrawDetail'
+  './sync/getWithdrawDetail',
+  './sync/user',
+  './sync/getWithdrawRecord',
+  './sync/getBankCard',
 ],function(){});

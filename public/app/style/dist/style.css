@@ -6798,6 +6798,10 @@ a#header:hover {
   display: inline-block;
   width: 100px;
 }
+#header .user-warp {
+  display: inline-block;
+  width: 100px;
+}
 .import-bank-info {
   display: block;
   margin-left: auto;
@@ -6819,6 +6823,7 @@ a.import-bank-info:hover {
   margin-left: auto;
   margin-right: auto;
   background-color: #f2dede;
+  overflow-x: inherit;
 }
 a.record-body:hover {
   background-color: #e4b9b9;
@@ -6835,13 +6840,14 @@ a.record-body:hover {
 .record-body pending {
   position: relative;
 }
-.record-body pending .recharge-handle {
+.record-body pending .pending-handle {
   position: absolute;
   display: block;
   top: -34px;
+  left: -55px;
   z-index: 2;
 }
-.record-body pending .recharge-handle a {
+.record-body pending .pending-handle a {
   color: white;
 }
 .detail {
@@ -6923,4 +6929,38 @@ a.detail .detail-header:hover {
 .paging .paging-find {
   display: inline-block;
   margin: 20px 20px;
+}
+#banktemplate {
+  width: 1200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fff;
+  background-color: #337ab7;
+  margin-top: 50px;
+  color: #8a6d3b;
+}
+a#banktemplate:hover {
+  background-color: #286090;
+}
+a#banktemplate:hover {
+  color: #66512c;
+}
+#bankCardInfo {
+  width: 1200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: #8a6d3b;
+}
+a#bankCardInfo:hover {
+  color: #66512c;
+}
+#bankCardInfo .panel-primary {
+  margin-top: 50px;
+}
+#bankCardInfo .bankCardItem {
+  float: left !important;
+  width: 500px;
+  margin-left: 58px;
 }
