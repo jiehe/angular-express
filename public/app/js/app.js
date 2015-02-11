@@ -2,19 +2,21 @@
 
 define([
   'angular',
+  'service/index',
   'directive/index',
   'controller/index',
-  'service/index',
   'filter/index',
-  'uiRouter'
+  'uiRouter',
+  'angularCookie'
 ], function (angular, filters, services, directives, controllers) {
 
   // Declare app level module which depends on filters, and services
 
   return angular.module('myApp', [
     'ui.router',
-    'myApp.filters',
+    'ipCookie',
     'myApp.services',
+    'myApp.filters',
     'myApp.directives',
     'myApp.controllers'
   ]);

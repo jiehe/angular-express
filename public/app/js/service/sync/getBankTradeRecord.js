@@ -9,27 +9,25 @@ define(['../services'], function(services){
       getNewData: ''
     }
 
-    service.getData = function(data, fn) {
+    service.getData = function(option, fn) {
       if(service.data) {
         fn(service.data);
         return true;
       }
-      $http.get('/getBankTradeRecord')
+      $http.get('/getBankTradeRecord', {params:option})
         .success(function(data){
           service.data = data;
           fn(data);
         })
     }
 
-    service.getNewData = function(data ,fn) {
-      $http.get('/getBankTradeRecord')
+    service.getNewData = function(option ,fn) {
+      $http.get('/getBankTradeRecord', {params:option})
         .success(function(data){
           service.data = data;
           fn(data);
         })
     }
-
-
     return service;
   }])
 })

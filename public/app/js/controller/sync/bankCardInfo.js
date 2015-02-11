@@ -4,15 +4,11 @@ define(['../controllers','underscore'], function (controllers, _) {
     getBankCard.getData($stateParams, getBankCard_callback);
 
     function getBankCard_callback(data) {
-      $scope.message = data.message,
-      $scope.query = data.query,
-      $scope.model = data.model,
-      $scope.success = data.success,
-      $scope.resultCode = data.resultCode,
-      $scope.models = data.models;
+
+      $scope.models = data;
 
 
-      user.findUser(data.models[0].buyerId, function(currentUser) {
+      user.findUser(data[0].buyerId, function(currentUser) {
         $scope.accountName = currentUser.accountName;
         $scope.email = currentUser.email;
         $scope.active_time = currentUser.active_time;

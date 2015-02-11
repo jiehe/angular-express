@@ -1,0 +1,31 @@
+<div>
+	<div class="table-responsive record-body trade-body">
+		<table class="table table-bordered table-striped">
+			<thead>
+			<th>买家账号</th>
+			<th>买家邮箱</th>
+			<th>开通时间</th>
+			<th>bank name</th>
+			<th>bank account number</th>
+			<th>account name</th>
+			<th>bank address</th>
+			<th>swift code</th>
+			<th>操作</th>
+			</thead>
+			<tr ng-repeat="item in models | recordFilter | orderByCreateTime: 'true' | orderBy:'status' ">
+				<td>{{item.accountName}}</td>
+				<td>{{item.email}}</td>
+				<td>{{item.active_time }}</td>
+				<td>{{item.bankName }}</td>
+				<td>{{item.cardNo}}</td>
+				<td>{{item.userName }}</td>
+				<td>{{item.bankAddress}}</td>
+				<td>{{item.swiftCode}}</td>
+				<td><a class="btn btn-primary" href="#/bankCardInfo?buyerId={{item.buyerId}}">更多银行卡</a></td>
+			</tr>
+		</table>
+	</div>
+	<!--<footer id="footer">-->
+		<!--<paging max-page="{{maxPage}}"  page-num="{{pageNum}}" total="30"></paging>-->
+	<!--</footer>-->
+</div>

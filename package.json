@@ -48,6 +48,7 @@
   "dependencies": {
     "bluebird": "^2.9.5",
     "ejs": "^2.2.4",
+    "formidable": "^1.0.16",
     "lodash": "^3.1.0",
     "request": "^2.53.0",
     "underscore": "^1.7.0",

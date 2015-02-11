@@ -7,6 +7,8 @@ define([
   './sync/orderByCreateTime',
   './sync/status',
   './sync/method',
+  './sync/recordFilter',
+  './sync/transactionType'
 ], function(){
 
 })

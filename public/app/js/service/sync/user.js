@@ -4,10 +4,13 @@ define(['../services', 'underscore'], function(services, _) {
   services.factory('user', ['$http', function($http){
 
 
+
+
     var service = {
       data: '',
       getData: getData,
-      findUser: findUser
+      findUser: findUser,
+      init: null
     }
     return service;
 
@@ -34,7 +37,7 @@ define(['../services', 'underscore'], function(services, _) {
         });
         return;
       }
-      var currentUser = _.find(service.data.models, function(val, key) {
+      var currentUser = _.find(service.data, function(val, key) {
         return buyerId == val.buyerId;
       })
 

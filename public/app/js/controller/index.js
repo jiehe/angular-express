@@ -10,5 +10,7 @@ define([
     './sync/withdrawDetail',
     './sync/banktemplate',
     './sync/bankCardInfo',
+    './sync/consumeDetail',
+    './sync/users',
   ],
   function(){});

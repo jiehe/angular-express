@@ -5,26 +5,168 @@ var request = require('request');
 var _ = require('lodash');
 var Promise = require('bluebird');
 var url = require('url');
+var config = require('./config.json');
 
-var host = 'http://192.168.88.246:8080/';
+var env = process.env.host || 'local';
 
 
+
+var HOST = config.host[env];
+
+console.log(config);
 
 var api  = {
   getRechargeRecord: getRechargeRecord,
   getBankTradeRecord: getBankTradeRecord,
   getTradeRecord: getTradeRecord,
   getWithdrawRecord: getWithdrawRecord,
-  getRechargeDetail: getRechargeDetail,
+  getDetail: getDetail,
   getWithdrawDetail: getWithdrawDetail,
   getUser: getUser,
   fileUpdate: fileUpdate,
-  getBankCard: getBankCard
+  getBankCard: getBankCard,
+  ensure: ensure,
+  failed: failed,
+  updateBankInfo: updateBankInfo,
+  importBankInfo: importBankInfo,
+  getOperatorIp: getOperatorIp,
+  emailRemindPay: emailRemindPay,
+  login: login
+
+}
+
+function login(req, res) {
+
+  var bossUserId   = req.query.bossUserId;
+  var bossUserName = req.query.bossUserName;
+  if(!bossUserId || !bossUserName) {
+    throw new Error('请登录boss系统');
+
+  }
+
+  res.setHeader("Set-Cookie", ["bossUserId="+bossUserId, "bossUserName="+bossUserName]);
+  res.send({
+    'error':false,
+    'statusCode':null,
+    'resultDesc':null,
+    'result':null
+  });
+}
+
+function emailRemindPay(req, res) {
+  var url = HOST + 'emailservice/sendRemindDepositEmail.gm';
+
+  var option = {
+    transactionId: req.query.transactionId
+  }
+  console.log(url);
+  request.get(url,{qs:option}, function(err,data){
+    if(err){
+      console.log(err);
+      return;
+    }
+
+    res.json(JSON.parse(data.body));
+  })
+}
+
+function getOperatorIp(req,res) {
+    var ipAddress;
+    var headers = req.headers;
+    var forwardedIpsStr = headers['x-real-ip'] || headers['x-forwarded-for'];
+    forwardedIpsStr ? ipAddress = forwardedIpsStr : ipAddress = null;
+    if (!ipAddress) {
+      ipAddress = req.connection.remoteAddress;
+    }
+  res.json({ip:ipAddress});
+}
+
+function importBankInfo(req, res) {
+  var url = HOST + 'bankrecordservice/importBankRecord.gm';
+
+  var option = {
+    filePath: req.query.filePath
+  }
+  console.log(url);
+  request.get(url,{qs:option}, function(err,data){
+    if(err){
+      console.log(err);
+      return;
+    }
+
+    res.json(JSON.parse(data.body));
+  })
+}
+
+function updateBankInfo(req, res) {
+  var url = HOST + 'bankrecordservice/updateBankRecord.gm';
+
+  var option = {
+    transactionId: req.query.transactionId,
+    bankName:req.query.bankName,
+    accountName: req.query.accountName,
+    bankTransactionNumber: req.query.bankTransactionNumber,
+    bankAddress: req.query.bankAddress,
+    swiftCode: req.query.swiftCode
+  }
+  console.log(url);
+  request.get(url,{qs:option}, function(err,data){
+    if(err){
+      console.log(err);
+      return;
+    }
+
+    res.json(JSON.parse(data.body));
+  })
+}
+
+
+function failed(req, res) {
+  var url = HOST + 'transactionservice/transactionFailed.gm';
+
+  var option = {
+    transactionId: req.query.transactionId,
+    transactionType:req.query.transactionType,
+    note: req.query.note,
+    operateBy: req.query.operateBy,
+    operatorName: req.query.operatorName,
+    operatorIP: req.query.operatorIP
+  }
+  console.log(url);
+  request.get(url,{qs:option}, function(err,data){
+    if(err){
+      console.log(err);
+      return;
+    }
+
+    res.json(JSON.parse(data.body));
+  })
+}
+function ensure(req, res) {
+  var url = HOST + 'transactionservice/transactionComplete.gm';
+
+  var option = {
+    transactionId: req.query.transactionId,
+    transactionType:req.query.transactionType,
+    note: req.query.note,
+    operateBy: req.query.operateBy,
+    operatorName: req.query.operatorName,
+    operatorIP: req.query.operatorIP
+  }
+  console.log(url);
+  request.get(url,{qs:option}, function(err,data){
+    if(err){
+      console.log(err);
+      return;
+    }
+
+    res.json(JSON.parse(data.body));
+  })
 }
 
 
 function getBankCard(req, res) {
-  var url = host + 'accountservice/getBuyerBankCardList.gm';
+  var url = HOST + 'accountservice/getBuyerBankCardList.gm';
 
   var option = {
     pageNum: req.query.pageNum ||1,
@@ -42,6 +184,8 @@ function getBankCard(req, res) {
   })
 }
 
+
+
 function fileUpdate(req, res) {
   console.log(req);
 }
@@ -49,7 +193,7 @@ function fileUpdate(req, res) {
 
 function getUser(req, res) {
 
-  var url = host + 'accountservice/getBuyerBaseInfoList.gm';
+  var url = HOST + 'accountservice/getBuyerBaseInfoList.gm';
   request.get(url,{}, function(err,data){
     if(err){
       console.log(err);
@@ -65,12 +209,11 @@ function getRechargeRecord(req, res) {
 
   var option = {
     pageNum: req.query.pageNum ||1,
-    pageSize:req.query.pageSize ||10,
-    buyerId: req.query.buyerId || 104
+    pageSize:req.query.pageSize ||10
   }
 
   _.extend(option, req.query);
-  var url = host + 'transactionservice/getDepositRecordList.gm';
+  var url = HOST + 'transactionservice/getDepositRecordList4ERP.gm';
 
 
   console.log(url);
@@ -89,12 +232,11 @@ function getWithdrawRecord(req, res) {
 
   var option = {
     pageNum: req.query.pageNum ||1,
-    pageSize:req.query.pageSize ||10,
-    buyerId: req.query.buyerId || 104
+    pageSize:req.query.pageSize ||10
   }
 
   _.extend(option, req.query);
-  var url = host + 'transactionservice/getWithdrawRecordList4ERP.gm';
+  var url = HOST + 'transactionservice/getWithdrawRecordList4ERP.gm';
 
 
   console.log(url);
@@ -112,20 +254,35 @@ function getWithdrawRecord(req, res) {
 
 function getBankTradeRecord(req, res) {
 
+  var option = {
+    transactionId:req.query.transactionId
+  }
 
-  res.json(BankTradeRecord);
+  _.extend(option, req.query);
+  var url = HOST + 'bankrecordservice/getBankRecord.gm';
+
+  console.log(url);
+  request.get(url,{qs:option}, function(err,data){
+    if(err){
+      console.log(err);
+      return;
+    }
+
+    res.json(JSON.parse(data.body));
+  })
+
+  //res.json(BankTradeRecord);
 }
 
 
 function getTradeRecord(req, res) {
   var option = {
     pageNum: req.query.pageNum ||1,
-    pageSize: req.query.pageSize ||10,
-    buyerId: req.query.buyerId || 104
+    pageSize: req.query.pageSize ||10
   }
 
   _.extend(option, req.query);
-  var url = host + 'transactionservice/getTransactionRecordList.gm';
+  var url = HOST + 'transactionservice/getTransactionRecordList4ERP.gm';
 
   console.log(url);
   request.get(url,{qs:option}, function(err,data){
@@ -138,8 +295,27 @@ function getTradeRecord(req, res) {
   //res.json(TradeRecord);
 }
 
-function getRechargeDetail(rep, res) {
-  res.json(RechargeDetail);
+function getDetail(req, res) {
+
+  var option = {
+    transactionNumber: req.query.transactionNumber
+  }
+
+  _.extend(option, req.query);
+  var url = HOST + 'transactionservice/getTransactionRecordByNumber.gm';
+
+
+  console.log(url);
+  request.get(url,{qs:option}, function(err,data){
+    if(err){
+      console.log(err);
+      return;
+    }
+
+    res.json(JSON.parse(data.body));
+  })
+
+  //res.json(RechargeDetail);
 }
 
 function getWithdrawDetail(rep, res) {

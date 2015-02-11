@@ -2,27 +2,27 @@
 	<table class="table table-bordered table-striped">
 		<tr>
 			<td>帐号 :</td>
-			<td><%= user %></td>
+			<td><%= accountName %></td>
 		</tr>
 		<tr>
 			<td>银行交易号 :</td>
-			<td><%= tradeNumber %></td>
+			<td><%= bankTransactionNumber %></td>
 		</tr>
 		<tr>
-			<td>到账金额($) :</td>
-			<td><strong class="text-oringe"><%= receviedFee %></strong></td>
+			<td><%= title1 %> </td>
+			<td><strong class="text-oringe"><%= balance %></strong></td>
 		</tr>
 		<tr>
 			<td>服务费($) :</td>
-			<td><%= serviceFee %></td>
+			<td><%= commission %></td>
 		</tr>
 		<tr>
 			<td>优惠($) :</td>
-			<td><%= preFee %></td>
+			<td><%= discountCommission%></td>
 		</tr>
 		<tr>
-			<td><strong>实冲金额($) :</strong></td>
-			<td><strong class="text-red"><%= actual %></strong></td>
+			<td><strong><%= title2 %> </strong></td>
+			<td><strong class="text-red"><%= balance-commission-discountCommission %></strong></td>
 		</tr>
 	</table>
 

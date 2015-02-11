@@ -6792,7 +6792,7 @@ a#header:hover {
 }
 #header .header-item {
   float: left !important;
-  margin: 40px 60px;
+  margin: 40px 30px;
 }
 #header .header-item .time-wrap {
   display: inline-block;
@@ -6800,7 +6800,11 @@ a#header:hover {
 }
 #header .user-warp {
   display: inline-block;
-  width: 100px;
+  min-width: 100px;
+}
+#header .status-warp {
+  display: inline-block;
+  width: 125px;
 }
 .import-bank-info {
   display: block;
@@ -6814,8 +6818,8 @@ a#header:hover {
 a.import-bank-info:hover {
   background-color: #f7ecb5;
 }
-.import-bank-info button {
-  margin: 10px;
+.import-bank-info a {
+  margin: 10px 50px;
 }
 .record-body {
   width: 1200px;
@@ -6846,6 +6850,7 @@ a.record-body:hover {
   top: -34px;
   left: -55px;
   z-index: 2;
+  width: 110px;
 }
 .record-body pending .pending-handle a {
   color: white;
@@ -6963,4 +6968,7 @@ a#bankCardInfo:hover {
   float: left !important;
   width: 500px;
   margin-left: 58px;
+}
+.pointer {
+  cursor: pointer;
 }

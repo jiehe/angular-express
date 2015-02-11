@@ -40,7 +40,7 @@ define(['angular', 'app'], function (angular, app) {
         }
       })
       .state('record.withdraw', {
-        url: '/withdraw',
+        url: '/withdraw?pageSize&pageNum',
         views: {
           'body@record': {
             templateUrl: 'app/tpl/record/withdraw.html',
@@ -48,8 +48,17 @@ define(['angular', 'app'], function (angular, app) {
           }
         }
       })
+      .state('record.users', {
+        url: '/users?pageSize&pageNum',
+        views: {
+          'body@record': {
+            templateUrl: 'app/tpl/record/users.html',
+            'controller': 'users'
+          }
+        }
+      })
       .state('rechargeDetail', {
-        url: '/rechargeDetail',
+        url: '/rechargeDetail?transactionNumber',
         views: {
           '': {
             templateUrl: 'app/tpl/detail/recharge.html',
@@ -57,12 +66,12 @@ define(['angular', 'app'], function (angular, app) {
           }
         }
       })
-      .state('withdrawDetail', {
-        url: '/withdrawDetail',
+      .state('consumeDetail', {
+        url: '/consumeDetail?transactionNumber',
         views: {
           '': {
-            templateUrl: 'app/tpl/detail/withdraw.html',
-            controller: 'withdrawDetail'
+            templateUrl: 'app/tpl/detail/consume.html',
+            controller: 'consumeDetail'
           }
         }
       })

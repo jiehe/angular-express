@@ -3,12 +3,19 @@
  */
 define(['../services'], function(services){
 
-  services.factory('getRechargeDetail', ['$http',function($http){
+  services.factory('email', ['$http',function($http){
 
     var service = {
-      data: '',
+      emailRemindPay:'',
       getData: '',
       getNewData: ''
+    }
+
+    service.emailRemindPay = function(option, fn) {
+      $http.get('/emailRemindPay', {params:option})
+        .success(function(data){
+          fn(data);
+        })
     }
 
     service.getData = function(option, fn) {
@@ -16,7 +23,7 @@ define(['../services'], function(services){
         fn(service.data);
         return true;
       }
-      $http.get('/getRechargeDetail')
+      $http.get('/getDetail', {params:option})
         .success(function(data){
           service.data = data;
           fn(data);
@@ -24,7 +31,7 @@ define(['../services'], function(services){
     }
 
     service.getNewData = function(option, fn) {
-      $http.get('/getRechargeDetail')
+      $http.get('/getDetail', {params:option})
         .success(function(data){
           service.data = data;
           fn(data);

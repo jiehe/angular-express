@@ -11,15 +11,16 @@ define(['../filters'], function (filters) {
       if(!arr) return;
 
       for (var i = 0, len = arr.length; i < len; i++) {
-        arr[i].timeStamp = new Date(arr[i].createTime).getTime();
+        arr[i].timeCreateStamp = new Date(arr[i].createTime).getTime();
+        arr[i].timeSuccessStamp = new Date(arr[i].completeTime).getTime();
       }
       if(up){//升序
         arr.sort(function (obj1, obj2) {
-          return obj2.timeStamp - obj1.timeStamp
+          return obj2.timeCreateStamp - obj1.timeCreateStamp
         })
       } else { //降序
         arr.sort(function (obj1, obj2) {
-          return obj1.timeStamp - obj2.timeStamp
+          return obj1.timeCreateStamp - obj2.timeCreateStamp
         })
       }
       return arr;

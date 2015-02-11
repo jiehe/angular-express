@@ -4,28 +4,30 @@
 			<li class="header-item">
 				<span>买家 :</span>
 				<div class="user-warp">
-					<select class="form-control">
-						<option ng-repeat="model in models">{{model.accountName}}</option>
+					<select class="form-control" ng-model="currentBuyer" ng-change="buyerChange()" ng-options="model.accountName for model in models">
+						<option value="">-- 全部 --</option>
 					</select>
 				</div>
 			</li>
 			<li class="header-item">
 				<span>充值时间 :</span>
-				<div class="time-wrap"><input id="startTime" size="16" type="text" value="2012-06-15" readonly class="form-control form_datetime"></div> &nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;
-				<div class="time-wrap"><input id="endTime" size="16" type="text" value="2012-06-15" readonly class="form-control form_datetime"></div>
-			</li>
-			<li class="header-item">
-				<span>充值状态 :</span>
-				<div class="btn-group">
-					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">--全部-- &nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="">--全部--</a></li>
-						<li ng-repeat="item in status"><a href="">{{item}}</a></li>
-					</ul>
+				<div class="time-wrap">
+					<input id="startTime" size="16" type="text"  ng-model="startTime"  readonly class="form-control form_datetime">
+				</div> &nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="time-wrap">
+					<input id="endTime" size="16" type="text" ng-model="endTime"  readonly class="form-control form_datetime">
 				</div>
 			</li>
 			<li class="header-item">
-				<button type="button" class="btn btn-warning">搜索</button>
+				<span>充值状态 :</span>
+				<div class="status-warp">
+					<select class="form-control" ng-model="currentStatus" ng-change="statusChange()" ng-options="item|status for item in status">
+						<option value="">-- 全部 --</option>
+					</select>
+				</div>
+			</li>
+			<li class="header-item">
+				<button disabled  type="button" class="btn btn-warning">搜索</button>
 			</li>
 		</ul>
 	</div>

@@ -14,10 +14,10 @@
 			<th>状态</th>
 			<th>操作</th>
 			</thead>
-			<tr ng-repeat="item in items | orderByCreateTime: 'true' | orderBy:'status' ">
+			<tr ng-repeat="item in items | recordFilter | orderByCreateTime: 'true' | orderBy:'status' ">
 				<td>{{item.transactionNumber}}</td>
 				<td>{{item.accountName}}</td>
-				<td>{{item.transactionType}}</td>
+				<td>{{item.transactionType | transactionType}}</td>
 				<td>{{item.transactionMoney |currency}}</td>
 				<td>{{item.discountCommission |currency}}</td>
 				<td>{{item.coupon |currency}}</td>
@@ -25,11 +25,11 @@
 				<td>{{item.createTime}}</td>
 				<td>{{item.completeTime}}</td>
 				<td>{{item.status | status}}</td>
-				<td><a class="btn btn-primary" href="#">详情</a></td>
+				<td><a class="btn btn-primary" href="#/rechargeDetail?transactionNumber={{item.transactionNumber}}">详情</a></td>
 			</tr>
 		</table>
 	</div>
 	<footer id="footer">
-		<paging max-page="{{maxPage}}"  page-num="{{pageNum}}" total="30"></paging>
+		<paging max-page="{{maxPage}}"  page-num="{{pageNum}}" page-size="{{pageSize}}"></paging>
 	</footer>
 </div>

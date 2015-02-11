@@ -11,14 +11,15 @@ require.config({
 		text: './../bower_components/requirejs-text/text',
 		bootstrap: './../bower_components/bootstrap/dist/js/bootstrap.min',
 		underscore: './../bower_components/underscore/underscore-min',
-		fileUpload: './../bower_components/angular-file-upload/angular-file-upload.min'
+		angularCookie: './../bower_components/angular-cookie/angular-cookie',
+		uploadFile: './../js/lib/jquery.uploadify.min'
 	},
 	shim: {
 		'angular' : {'exports' : 'angular'},
 		'uiRouter': {
 			deps:['angular']
 		},
-		'fileUpload': {
+		'angularCookie': {
 			deps:['angular']
 		},
 		'jDialog': {
@@ -26,6 +27,9 @@ require.config({
 			'exports': 'jDialog'
 		},
 		'jCloud': {
+			deps:['jquery']
+		},
+		'uploadFile': {
 			deps:['jquery']
 		},
 		'bootstrap': {

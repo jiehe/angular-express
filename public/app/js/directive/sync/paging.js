@@ -20,17 +20,17 @@ define(['../directives'], function(directives){
 
         scope.$watch(scope.pageNum, function(newVal) {
           scope.pageNum = newVal;
-          timeout(refresh, 100);
+          timeout(refresh, 500);
         })
 
         scope.$watch(scope.pageSize, function(newVal) {
           scope.pageSize = newVal;
-          timeout(refresh, 100);
+          timeout(refresh, 500);
         })
 
         scope.$watch(scope.maxPage, function(newVal) {
           scope.maxPage = newVal;
-          timeout(refresh, 100);
+          timeout(refresh, 500);
         })
 
 

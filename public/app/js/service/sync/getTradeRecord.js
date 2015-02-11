@@ -23,7 +23,7 @@ define(['../services'], function(services){
         })
     }
 
-    service.getNewData = function(data, fn) {
+    service.getNewData = function(option, fn) {
       $http.get('/getTradeRecord', {params:option})
         .success(function(data){
           service.data = data;
