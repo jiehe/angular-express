@@ -13,7 +13,7 @@ var env = process.env.host || 'local';
 
 var HOST = config.host[env];
 
-console.log(config);
+console.log(HOST);
 
 var api  = {
   getRechargeRecord: getRechargeRecord,
