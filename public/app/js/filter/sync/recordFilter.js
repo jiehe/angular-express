@@ -3,6 +3,9 @@ define(['../filters', 'underscore'], function (filters, _) {
 
     return function (arr) {
 
+      if(!arr || arr.length == 0) {
+        return arr;
+      }
 
       //充值状态过滤
       if(recordHeader.currentStatus === 0 || recordHeader.currentStatus) {
