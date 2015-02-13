@@ -12,7 +12,7 @@ define(['../services'], function(services){
       data: '',
       getData: '',
       getNewData: '',
-      status : [0, 1, 2],
+      status : [2, 4, -1],
       currentStatus:null,
       currentBuyerId: null,
       startTime: null,

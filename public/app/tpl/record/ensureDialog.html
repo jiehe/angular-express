@@ -10,7 +10,7 @@
 		</tr>
 		<tr>
 			<td><%= title1 %> </td>
-			<td><strong class="text-oringe"><%= balance %></strong></td>
+			<td><strong class="text-oringe"><%= gross %></strong></td>
 		</tr>
 		<tr>
 			<td>服务费($) :</td>
@@ -22,7 +22,7 @@
 		</tr>
 		<tr>
 			<td><strong><%= title2 %> </strong></td>
-			<td><strong class="text-red"><%= balance-commission-discountCommission %></strong></td>
+			<td><strong class="text-red"><%= gross-commission+discountCommission %></strong></td>
 		</tr>
 	</table>
 

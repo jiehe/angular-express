@@ -87,13 +87,13 @@ function getOperatorIp(req,res) {
 }
 
 function importBankInfo(req, res) {
-  var url = HOST + 'bankrecordservice/importBankRecord.gm';
+  var url = HOST + 'bankrecordservice/importBankRecord.gm?filePath='+req.query.filePath;
 
   var option = {
     filePath: req.query.filePath
   }
   console.log(url);
-  request.get(url,{qs:option}, function(err,data){
+  request.get(url, function(err,data){
     if(err){
       console.log(err);
       return;
@@ -272,8 +272,11 @@ function getBankTradeRecord(req, res) {
       console.log(err);
       return;
     }
-
-    res.json(JSON.parse(data.body));
+    if(data.body){
+        res.json(JSON.parse(data.body));
+    }else{
+      res.send(data.body);
+    }
   })
 
   //res.json(BankTradeRecord);

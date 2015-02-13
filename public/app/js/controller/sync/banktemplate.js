@@ -22,17 +22,21 @@ define(['../controllers', 'uploadFile', 'jDialog'], function (controllers, uploa
     $('#btn_upload').click(function() {
 
 
-      time = setInterval(function() {
+      window.time = setInterval(function() {
         obj =$('iframe')[0].contentWindow.document.getElementsByTagName('pre');
         if(obj.length>0) {
-
+          clearInterval(window.time);
           try{
             callBackData = JSON.parse(obj[0].innerHTML);
             if(callBackData.models[0].success) {
               var url = callBackData.models[0].url;
               importBankInfo.getNewData({filePath: url},function(data){
-                jDialog.alert(data.message);
-                clearInterval(time);
+                jDialog.alert(data.message,{
+                  handler:function(button, jDialog){
+                    window.location.href = "/";
+                  }
+                });
+                clearInterval(window.time);
               })
             }else {
               alert('上传失败'+JSON.stringify(callBackData));

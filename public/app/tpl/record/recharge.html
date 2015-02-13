@@ -13,7 +13,7 @@
 			<th>状态</th>
 			<th>操作</th>
 			</thead>
-			<tr ng-repeat="item in items | recordFilter | orderByCreateTime: 'true' | orderBy:'status' ">
+			<tr ng-repeat="item in items | orderByCreateTime: 'true' | recordFilter ">
 				<td>{{item.transactionNumber}}</td>
 				<td>{{item.accountName}}</td>
 				<td>{{item.transactionMoney |currency}}</td>
@@ -23,8 +23,8 @@
 				<td>{{item.createTime}}</td>
 				<td>{{item.completeTime}}</td>
 				<td>{{item.status | status}}</td>
-				<td colspan="2" ng-class="{'hide':item.status}"><pending type="recharge" transaction-id="{{item.transactionId}}" item="{{item}}" number="{{item.transactionNumber}}"><button class="btn btn-warning">确认充值</button></pending></td>
-				<td colspan="2" ng-class="{'hide':!item.status}"><a class="btn btn-primary" href="#/rechargeDetail?transactionNumber={{item.transactionNumber}}">查看</a></td>
+				<td colspan="2" ng-if="item.status == 2"><pending type="recharge" transaction-id="{{item.transactionId}}" item="{{item}}" number="{{item.transactionNumber}}"><button class="btn btn-warning">确认充值</button></pending></td>
+				<td colspan="2" ng-if="item.status != 2"><a class="btn btn-primary" href="#/rechargeDetail?transactionNumber={{item.transactionNumber}}">查看</a></td>
 			</tr>
 		</table>
 	</div>

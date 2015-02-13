@@ -13,7 +13,7 @@ define(['../filters'], function(filters){
         case 4:
           return "充值成功";
         break;
-        case 1:
+        case -1:
           return "充值失败";
         break;
       }

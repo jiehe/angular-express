@@ -32,6 +32,26 @@ define(['../filters', 'underscore'], function (filters, _) {
         })
       }
 
+      //充值状态 排序
+      if(!arr[0].status2) {
+        _.each(arr, function(val, key) {
+          if(val.status == -1) {
+            val.status2 = 3;
+          }else if(val.status == 2) {
+            val.status2 = 1;
+          } else {
+            val.status2 = 2;
+          }
+
+        })
+      }
+      if(arr[0].status2) {
+        arr.sort(function (obj1, obj2) {
+          return obj1.status2 - obj2.status2
+        })
+      }
+
+
       return arr;
 
     }

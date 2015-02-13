@@ -14,13 +14,13 @@
 			<th>状态</th>
 			<th>操作</th>
 			</thead>
-			<tr ng-repeat="item in items | recordFilter | orderByCreateTime: 'true' | orderBy:'status' ">
+			<tr ng-repeat="item in items | orderByCreateTime: 'true' | recordFilter ">
 				<td>{{item.transactionNumber}}</td>
 				<td>{{item.accountName}}</td>
 				<td>{{item.transactionType | transactionType}}</td>
 				<td>{{item.transactionMoney |currency}}</td>
+				<td>{{item.commission |currency}}</td>
 				<td>{{item.discountCommission |currency}}</td>
-				<td>{{item.coupon |currency}}</td>
 				<td>{{item.transactionMethod | method}}</td>
 				<td>{{item.createTime}}</td>
 				<td>{{item.completeTime}}</td>

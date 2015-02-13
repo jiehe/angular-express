@@ -52,9 +52,9 @@ define(['../directives', 'jDialog', 'underscore', 'jquery'], function(directives
           email.emailRemindPay({transactionId:transactionId}, function(data){
             console.log(data);
             if(data) {
-              alert('催款成功!');
+              jDialog.alert('催款成功!');
             }else {
-              alert('失败'+ data);
+              jDialog.alert('失败'+ data);
             }
           })
         }
@@ -62,9 +62,14 @@ define(['../directives', 'jDialog', 'underscore', 'jquery'], function(directives
         scope.ensure = function() {
 
           getBankTradeRecord.getNewData({transactionId: scope.transactionId}, function(data){
+
+            if(!data) {
+              jDialog.alert('没有该交易id的相关银行记录，请导入！');
+              return;
+            }
             var addAttr = addAttrForTemplate();
-            angular.extend(data.model,addAttr );
-            jDialog.alert(ensureDialogStr(data.model), {
+            angular.extend(data,addAttr );
+            jDialog.alert(ensureDialogStr(data), {
               text : '确认',          // 按钮上要显示的文字（建议字数不要超过4）
               type : 'highlight',       // 按钮类型，可选：highlight，normal
               handler : function(button,dialog){  // 按钮的点击处理事件
@@ -78,9 +83,9 @@ define(['../directives', 'jDialog', 'underscore', 'jquery'], function(directives
 
                 operator.ensure(option, function(data){
                   if(data.error) {
-                    alert(data.errorMsg);
+                    jDialog.alert(data.errorMsg);
                   }else{
-                    alert('操作成功！');
+                    jDialog.alert('操作成功！');
                   }
                 })
                 dialog.hide();
@@ -110,9 +115,9 @@ define(['../directives', 'jDialog', 'underscore', 'jquery'], function(directives
 
               operator.failed(option, function(data){
                 if(data.error) {
-                  alert(data.errorMsg);
+                  jDialog.alert(data.errorMsg);
                 }else{
-                  alert('操作成功！');
+                  jDialog.alert('操作成功！');
                 }
               })
               dialog.hide();

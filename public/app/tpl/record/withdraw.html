@@ -13,13 +13,13 @@
 			<th>状态</th>
 			<th>操作</th>
 			</thead>
-			<tr ng-repeat="item in items | recordFilter | orderByCreateTime: 'true' | orderBy:'status' ">
+			<tr ng-repeat="item in items | orderByCreateTime: 'true' | recordFilter ">
 				<td>{{item.transactionNumber}}</td>
 				<td>{{item.accountName}}</td>
 				<td>{{item.transactionMoney |currency}}</td>
 				<td>{{item.commission |currency}}</td>
 				<td>{{item.discountCommission |currency}}</td>
-				<td class="pointer" ng-click="showBankInfo(item.transactionId)">{{item.transactionMethod | method}} &nbsp;<span class="text-oringe glyphicon glyphicon-triangle-bottom"></span></td>
+				<td class="pointer" ng-click="showBankInfo(item.transactionId)">{{item.transactionMethod | method}} &nbsp;<span ng-if="item.transactionMethod!=0" class="text-oringe glyphicon glyphicon-triangle-bottom"></span></td>
 				<td>{{item.createTime}}</td>
 				<td>{{item.completeTime}}</td>
 				<td>{{item.status | status}}</td>
