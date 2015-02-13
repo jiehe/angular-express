@@ -33,8 +33,10 @@ define(['../controllers', 'uploadFile'], function (controllers, uploadFile) {
               if(data.success) {
                 console.log(data);
                 alert('上传成功url: '+url);
+                clearInterval(time);
               }else {
                 alert('上传失败'+ data.message);
+                clearInterval(time);
               }
             })
           }else {
