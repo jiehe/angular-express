@@ -9,9 +9,14 @@ var config = require('./config.json');
 
 var env = process.env.host || 'local';
 
+var prd = process.env.NODE_ENV ;
 
 
 var HOST = config.host[env];
+
+if(prd) {
+  HOST = prd;
+}
 
 console.log(HOST);
 
