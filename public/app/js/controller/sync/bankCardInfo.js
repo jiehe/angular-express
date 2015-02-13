@@ -11,7 +11,7 @@ define(['../controllers','underscore'], function (controllers, _) {
       user.findUser(data[0].buyerId, function(currentUser) {
         $scope.accountName = currentUser.accountName;
         $scope.email = currentUser.email;
-        $scope.active_time = currentUser.active_time;
+        $scope.activeTime = currentUser.activeTime;
       });
 
 
