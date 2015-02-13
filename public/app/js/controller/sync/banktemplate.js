@@ -2,7 +2,7 @@
  * Created by dong on 2015/2/6.
  */
 
-define(['../controllers', 'uploadFile'], function (controllers, uploadFile) {
+define(['../controllers', 'uploadFile', 'jDialog'], function (controllers, uploadFile, jDialog) {
   controllers.controller('banktemplate', ['$scope', 'importBankInfo', function ($scope, importBankInfo) {
 
 
@@ -30,14 +30,8 @@ define(['../controllers', 'uploadFile'], function (controllers, uploadFile) {
           if(callBackData.models[0].success) {
             var url = callBackData.models[0].url;
             importBankInfo.getNewData({filePath: url},function(data){
-              if(data.success) {
-                console.log(data);
-                alert('上传成功url: '+url);
-                clearInterval(time);
-              }else {
-                alert('上传失败'+ data.message);
-                clearInterval(time);
-              }
+              jDialog.alert(data.message);
+              clearInterval(time);
             })
           }else {
             alert('上传失败'+JSON.stringify(callBackData));
