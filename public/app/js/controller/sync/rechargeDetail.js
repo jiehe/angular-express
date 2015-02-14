@@ -26,7 +26,7 @@ define(['../controllers'], function (controllers) {
 
       function getBankTradeRecord_callback(data) {
 
-        $scope.detail.bankInfo = data.model;
+        $scope.detail.bankInfo = data;
 
 
       }
