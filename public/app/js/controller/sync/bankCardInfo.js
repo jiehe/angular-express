@@ -13,8 +13,6 @@ define(['../controllers','underscore'], function (controllers, _) {
         $scope.email = currentUser.email;
         $scope.activeTime = currentUser.activeTime;
       });
-
-
     }
   }])
 });
