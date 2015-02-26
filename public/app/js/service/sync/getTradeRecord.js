@@ -3,31 +3,25 @@
  */
 define(['../services'], function(services){
 
-  services.factory('getTradeRecord', ['$http',function($http){
+  services.factory('getTradeRecord', ['$http', 'pagingService',function($http, pagingService){
 
     var service = {
       data: '',
-      getData: '',
-      getNewData: ''
+      getData: ''
     }
 
     service.getData = function(option, fn) {
-      if(service.data) {
-        fn(service.data);
-        return true;
-      }
       $http.get('/getTradeRecord', {params:option})
         .success(function(data){
           service.data = data;
+
+          //处理分页
+          pagingService.changePaging(data);
+
           fn(data);
         })
-    }
-
-    service.getNewData = function(option, fn) {
-      $http.get('/getTradeRecord', {params:option})
-        .success(function(data){
-          service.data = data;
-          fn(data);
+        .error(function(data) {
+          throw new Error(data);
         })
     }
 

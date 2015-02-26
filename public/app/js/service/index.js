@@ -13,4 +13,5 @@ define([
   './sync/importBankInfo',
   './sync/footer',
   './sync/email',
+  './sync/pagingService'
 ],function(){});
