@@ -3,33 +3,27 @@
  */
 define(['../services'], function(services){
 
-  services.factory('getWithdrawRecord', ['$http',function($http){
+  services.factory('getWithdrawRecord', ['$http', 'pagingService',function($http, pagingService){
 
     var service = {
       data: '',
-      getData: '',
-      getNewData: ''
+      getData: ''
     }
 
     service.getData = function(option, fn) {
-      if(service.data) {
-        fn(service.data);
-        return true;
-      }
+
       $http.get('/getWithdrawRecord', {params:option})
         .success(function(data){
           service.data = data;
+          //处理分页
+          pagingService.changePaging(data);
           fn(data);
+        })
+        .error(function(data) {
+          throw new Error(data);
         })
     }
 
-    service.getNewData = function(option, fn) {
-      $http.get('/getWithdrawRecord', {params:option})
-        .success(function(data){
-          service.data = data;
-          fn(data);
-        })
-    }
 
 
     return service;

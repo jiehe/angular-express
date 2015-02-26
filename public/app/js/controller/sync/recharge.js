@@ -5,19 +5,17 @@ define(['../controllers','underscore'], function (controllers, _) {
     'getRechargeRecord',
     'user' ,
     '$stateParams',
-    function ($scope, $http, getRechargeRecord,user, stateParams) {
+    'pagingService',
+    function ($scope, $http, getRechargeRecord,user, stateParams, pagingService) {
 
       user.init = init;
 
     function init() {
-      getRechargeRecord.getNewData(stateParams, getRechargeRecord_callback);
+      getRechargeRecord.getData(stateParams, getRechargeRecord_callback);
 
 
       function getRechargeRecord_callback(data) {
-        $scope.pageSize = data.pageSize;
-        $scope.pageNum = data.pageNum;
-        $scope.maxPage = data.maxPage;
-        $scope.items = data.items;
+        angular.extend($scope, data);
       }
     }
 

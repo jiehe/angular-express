@@ -24,13 +24,10 @@ define(['../controllers', 'jDialog', 'underscore'], function (controllers, jDial
       user.init = init;
       $scope.showBankInfo = showBankInfo;
       function init() {
-        getWithdrawRecord.getNewData(stateParams, getWithdrawRecord_callback);
+        getWithdrawRecord.getData(stateParams, getWithdrawRecord_callback);
 
         function getWithdrawRecord_callback(data) {
-          $scope.pageSize = data.pageSize;
-          $scope.pageNum = data.pageNum;
-          $scope.maxPage = data.maxPage;
-          $scope.items = data.items;
+          angular.extend($scope, data);
 
         }
       }

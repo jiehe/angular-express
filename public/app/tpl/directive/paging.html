@@ -1,22 +1,37 @@
 <div class="clearfix paging pull-right">
 	<ul class="pagination pull-left">
-		<li ng-class="{disabled:pageNum == 1}">
+		<!-- 当前页是1的时候，向前一页按钮不可点击 -->
+		<li ng-class="{disabled:pageNum == 1}" ng-if="pageNum !== 1">
 			<a href="{{router}}{{pageNum-1}}" aria-label="Previous">
 				<span aria-hidden="true">&laquo;</span>
 			</a>
 		</li>
-		<li ng-class="{active:$index+1 == pageNum}"  ng-repeat="item in pagingRepeat">
+		<li ng-class="{disabled:pageNum == 1}" ng-if="pageNum === 1">
+			<span aria-hidden="true">&laquo;</span>
+		</li>
+		<!-- end 当前页是1的时候，向前一页按钮不可点击 -->
+
+		<li ng-class="{active:$index+1 == pageNum}" ng-repeat="item in pagingRepeat">
 			<a href="{{router}}{{$index+1}}">{{$index+1}}</a>
 		</li>
-		<li ng-class="{disabled:pageNum == maxPage}">
+
+		<!-- 当前页是最后一页的时候，向后一页不可点击 -->
+		<li ng-class="{disabled:pageNum == maxPage}" ng-if="pageNum !== maxPage">
 			<a href="{{router}}{{pageNum+1}}" aria-label="Next">
 				<span aria-hidden="true">&raquo;</span>
 			</a>
 		</li>
+		<li ng-class="{disabled:pageNum == maxPage}" ng-if="pageNum === maxPage">
+			<span aria-hidden="true">&raquo;</span>
+		</li>
+		<!-- end 当前页是最后一页的时候，向后一页不可点击 -->
 	</ul>
+
 	<div class="paging-find pull-left">
-		共{{maxPage}}页&nbsp;&nbsp;&nbsp;到
-		<span class="paging-input"><input type="text" class="form-control"/></span>页
-		<button class="btn btn-success">确认</button>
+		<form name="pagingForm">
+			共{{maxPage}}页&nbsp;&nbsp;&nbsp;到
+			<span class="paging-input"><input type="number" required ng-model="selectPageNum"  class="form-control"/></span>页
+			<button type="submit" class="btn btn-success" ng-click="selectPageNumFn()">确认</button>
+		</form>
 	</div>
 </div>

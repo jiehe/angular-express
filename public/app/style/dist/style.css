@@ -6741,7 +6741,7 @@ abody:hover {
   background-color: #afd9ee;
 }
 #header {
-  width: 1200px;
+  width: 100%;
   color: #fff;
   background-color: #337ab7;
   display: block;
@@ -6810,7 +6810,7 @@ a#header:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 1200px;
+  width: 100%;
   height: 66px;
   margin-top: 25px;
   background-color: #fcf8e3;
@@ -6822,7 +6822,7 @@ a.import-bank-info:hover {
   margin: 10px 50px;
 }
 .record-body {
-  width: 1200px;
+  width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -6856,7 +6856,7 @@ a.record-body:hover {
   color: white;
 }
 .detail {
-  width: 1200px;
+  width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -6920,7 +6920,7 @@ a.detail .detail-header:hover {
   color: #6699FF;
 }
 #footer {
-  width: 1200px;
+  width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -6928,15 +6928,16 @@ a.detail .detail-header:hover {
 }
 .paging .paging-input {
   display: inline-block;
-  width: 34px;
+  width: 70px;
   margin: 0px 5px;
+  vertical-align: middle;
 }
 .paging .paging-find {
   display: inline-block;
   margin: 20px 20px;
 }
 #banktemplate {
-  width: 1200px;
+  width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -6952,7 +6953,7 @@ a#banktemplate:hover {
   color: #66512c;
 }
 #bankCardInfo {
-  width: 1200px;
+  width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;

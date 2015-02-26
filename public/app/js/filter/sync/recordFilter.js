@@ -3,9 +3,13 @@ define(['../filters', 'underscore'], function (filters, _) {
 
     return function (arr) {
 
+<<<<<<< HEAD
       if(!arr || arr.length == 0) {
         return arr;
       }
+=======
+      if(!arr) return arr;
+>>>>>>> paging
 
       //充值状态过滤
       if(recordHeader.currentStatus === 0 || recordHeader.currentStatus) {
