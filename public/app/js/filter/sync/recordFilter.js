@@ -3,13 +3,10 @@ define(['../filters', 'underscore'], function (filters, _) {
 
     return function (arr) {
 
-<<<<<<< HEAD
       if(!arr || arr.length == 0) {
         return arr;
       }
-=======
-      if(!arr) return arr;
->>>>>>> paging
+
 
       //充值状态过滤
       if(recordHeader.currentStatus === 0 || recordHeader.currentStatus) {
@@ -19,6 +16,9 @@ define(['../filters', 'underscore'], function (filters, _) {
       }
 
       //买家过滤
+      if(!arr || arr.length == 0) {
+        return arr;
+      }
       if(recordHeader.currentBuyerId === 0 || recordHeader.currentBuyerId) {
         arr = _.filter(arr, function(val, key) {
           return val.buyerId == recordHeader.currentBuyerId;
@@ -26,20 +26,28 @@ define(['../filters', 'underscore'], function (filters, _) {
       }
 
       //时间过滤
-
+      if(!arr || arr.length == 0) {
+        return arr;
+      }
       //交易单的创建时间或者成交时间大于 操作人选择的开始时间。
       if(recordHeader.startTime){
         arr = _.filter(arr, function(val, key) {
-          return val.timeCreateStamp > recordHeader.startTime ||(val.timeSuccessStamp?val.timeSuccessStamp:val.timeCreateStamp) > recordHeader.startTime;
+          return val.timeCreateStamp > recordHeader.startTime;
         })
+      }
+      if(!arr || arr.length == 0) {
+        return arr;
       }
       if(recordHeader.endTime) {
         arr = _.filter(arr, function(val, key) {
-          return (val.timeSuccessStamp?val.timeSuccessStamp:val.timeCreateStamp) < recordHeader.endTime;
+          return val.timeSuccessStamp < recordHeader.endTime;
         })
       }
 
       //充值状态 排序
+      if(!arr || arr.length == 0) {
+        return arr;
+      }
       if(!arr[0].status2) {
         _.each(arr, function(val, key) {
           if(val.status == -1) {

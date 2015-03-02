@@ -23,6 +23,7 @@ define(['../services'], function(services){
         total: option.total
       }
       angular.extend(service, pagingData);
+
       $rootScope.$broadcast('pagingChange');
     }
 
