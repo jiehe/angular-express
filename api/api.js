@@ -216,13 +216,12 @@ function getRechargeRecord(req, res) {
     pageNum: req.query.pageNum ||1,
     pageSize:req.query.pageSize ||10
   }
-
   _.extend(option, req.query);
   var url = HOST + 'transactionservice/getDepositRecordList4ERP.gm';
 
 
   console.log(url);
-  request.get(url,{qs:option}, function(err,data){
+  request.get(url,{data:option}, function(err,data){
     if(err){
       console.log(err);
       return;

@@ -6,7 +6,8 @@
  */
 define(['../services'], function(services){
 
-  services.factory('recordHeader', ['$http',function($http){
+  services.factory('recordHeader', [
+    function(){
 
     var service = {
       data: '',
@@ -16,7 +17,16 @@ define(['../services'], function(services){
       currentStatus:null,
       currentBuyerId: null,
       startTime: null,
-      endTime: null
+      endTime: null,
+      currentPage: 'recharge', //recharge || trade || withdraw
+      reloadRecord:reloadRecord
+    }
+
+    function reloadRecord() {
+      //switch(service.currentPage){
+      //  case 'recharge':
+      //    getRechargeRecord.getData();
+      //}
     }
 
     return service;

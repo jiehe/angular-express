@@ -12,9 +12,9 @@ bower install
 
 gulp less
 
-##第四步 设置测试接口地址
+##第四步 设置测试接口地址  || 或者设置生产环境地址
 
-在cmd命令行输入: set host=test
+在cmd命令行输入: set host=test   || NODE_ENV=生产环境地址
 
 ##第五步 启动服务
 

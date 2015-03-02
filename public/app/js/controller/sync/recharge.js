@@ -1,24 +1,21 @@
-define(['../controllers','underscore'], function (controllers, _) {
+define(['../controllers', 'underscore'], function (controllers, _) {
   controllers.controller('recharge', [
     '$scope',
     '$http',
     'getRechargeRecord',
-    'user' ,
-    '$stateParams',
-    'pagingService',
-    function ($scope, $http, getRechargeRecord,user, stateParams, pagingService) {
+    'user',
+    'recordHeader',
+
+    function ($scope, $http, getRechargeRecord, user, recordHeader) {
 
       user.init = init;
-
-    function init() {
-      getRechargeRecord.getData(stateParams, getRechargeRecord_callback);
-
-
-      function getRechargeRecord_callback(data) {
-        angular.extend($scope, data);
+      recordHeader.currentPage = 'recharge';
+      function init() {
+        getRechargeRecord.getData();
       }
-    }
-
       init();
-  }])
+      $scope.$on('rechargeRecordCharge', function(event, data) {
+        angular.extend($scope, data);
+      })
+    }])
 });

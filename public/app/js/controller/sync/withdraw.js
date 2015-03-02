@@ -2,18 +2,18 @@ define(['../controllers', 'jDialog', 'underscore'], function (controllers, jDial
   controllers.controller('withdraw', [
     '$scope',
     'getWithdrawRecord',
-    '$stateParams',
     'getBankCard',
     'user',
     'getBankTradeRecord',
     'updateBankInfo',
+    'recordHeader',
     function ($scope,
               getWithdrawRecord,
-              stateParams,
               getBankCard,
               user,
               getBankTradeRecord,
-              updateBankInfo) {
+              updateBankInfo,
+              recordHeader) {
 
       var buttons;
       var bankInfoDialogStr = '';
@@ -22,17 +22,16 @@ define(['../controllers', 'jDialog', 'underscore'], function (controllers, jDial
       });
 
       user.init = init;
+      recordHeader.currentPage = 'withdraw';
       $scope.showBankInfo = showBankInfo;
       function init() {
-        getWithdrawRecord.getData(stateParams, getWithdrawRecord_callback);
-
-        function getWithdrawRecord_callback(data) {
-          angular.extend($scope, data);
-
-        }
+        getWithdrawRecord.getData();
       }
-
       init();
+
+      $scope.$on('withdrawRecordChange', function() {
+        angular.extend($scope, getWithdrawRecord.data);
+      })
 
       function showBankInfo(transactionId) {
 

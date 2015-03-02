@@ -3,21 +3,30 @@
  */
 define(['../services'], function(services){
 
-  services.factory('getWithdrawRecord', ['$http', 'pagingService',function($http, pagingService){
+  services.factory('getWithdrawRecord',
+    [
+      '$http',
+      'pagingService',
+      '$rootScope',
+      'recordHeader',
+      '$stateParams',
+      function($http, pagingService, $rootScope, recordHeader, $stateParams){
 
     var service = {
       data: '',
       getData: ''
     }
 
-    service.getData = function(option, fn) {
-
+    service.getData = function() {
+      var option = $stateParams;
+      option.status = recordHeader.currentStatus;
+      option.buyerId = recordHeader.currentBuyerId;
       $http.get('/getWithdrawRecord', {params:option})
         .success(function(data){
           service.data = data;
           //处理分页
           pagingService.changePaging(data);
-          fn(data);
+          $rootScope.$broadcast('withdrawRecordChange');
         })
         .error(function(data) {
           throw new Error(data);

@@ -8,10 +8,12 @@ define(['../directives', 'jDialog', 'underscore', 'jquery'], function(directives
     'getBankTradeRecord',
     'operator',
     'email',
+    'getRechargeRecord',
     function(
       getBankTradeRecord,
       operator,
-      email
+      email,
+      getRechargeRecord
     ){
 
     var ensureDialogStr = '';
@@ -62,7 +64,6 @@ define(['../directives', 'jDialog', 'underscore', 'jquery'], function(directives
         scope.ensure = function() {
 
           getBankTradeRecord.getNewData({transactionId: scope.transactionId}, function(data){
-
             if(!data) {
               jDialog.alert('没有该交易id的相关银行记录，请导入！');
               return;
@@ -86,6 +87,7 @@ define(['../directives', 'jDialog', 'underscore', 'jquery'], function(directives
                     jDialog.alert(data.errorMsg);
                   }else{
                     jDialog.alert('操作成功！');
+                    getRechargeRecord.changeStatus(option.transactionId, 4);
                   }
                 })
                 dialog.hide();
@@ -118,6 +120,7 @@ define(['../directives', 'jDialog', 'underscore', 'jquery'], function(directives
                   jDialog.alert(data.errorMsg);
                 }else{
                   jDialog.alert('操作成功！');
+                  getRechargeRecord.changeStatus(option.transactionId, -1);
                 }
               })
               dialog.hide();

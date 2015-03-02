@@ -7,24 +7,6 @@ define(['../filters', 'underscore'], function (filters, _) {
         return arr;
       }
 
-
-      //充值状态过滤
-      if(recordHeader.currentStatus === 0 || recordHeader.currentStatus) {
-        arr = _.filter(arr, function(val, key) {
-          return val.status == recordHeader.currentStatus;
-        })
-      }
-
-      //买家过滤
-      if(!arr || arr.length == 0) {
-        return arr;
-      }
-      if(recordHeader.currentBuyerId === 0 || recordHeader.currentBuyerId) {
-        arr = _.filter(arr, function(val, key) {
-          return val.buyerId == recordHeader.currentBuyerId;
-        })
-      }
-
       //时间过滤
       if(!arr || arr.length == 0) {
         return arr;

@@ -9,7 +9,7 @@ define(['../services', 'underscore'], function(services, _) {
     var service = {
       data: '',
       getData: getData,
-      findUser: findUser,
+      findUser: findUser, //param{buyerId}
       init: null
     }
     return service;

@@ -1,23 +1,24 @@
-define(['../controllers','underscore'], function (controllers, _) {
+define(['../controllers', 'underscore'], function (controllers, _) {
   controllers.controller('trade', [
     '$scope',
     '$http',
     'getTradeRecord',
     'user',
-    '$stateParams'
-    ,function ($scope, $http, getTradeRecord,user, stateParams) {
+    'recordHeader'
+    , function ($scope, $http, getTradeRecord, user, recordHeader) {
 
       user.init = init;
-    function init() {
-      getTradeRecord.getData(stateParams, getTradeRecord_callback);
+      recordHeader.currentPage = 'trade';
 
-      $scope.tradeRecord = '';
-      function getTradeRecord_callback(data) {
-
-        angular.extend($scope, data)
+      function init() {
+        getTradeRecord.getData();
       }
-    }
-
       init();
-  }])
+
+      $scope.$on('tradeRecordChange', function() {
+        angular.extend($scope, getTradeRecord.data)
+      })
+
+
+    }])
 });
