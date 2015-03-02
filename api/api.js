@@ -221,7 +221,7 @@ function getRechargeRecord(req, res) {
 
 
   console.log(url);
-  request.get(url,{data:option}, function(err,data){
+  request.get(url,{qs:option}, function(err,data){
     if(err){
       console.log(err);
       return;
